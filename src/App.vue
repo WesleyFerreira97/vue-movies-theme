@@ -5,7 +5,7 @@ import TestApi from './components/TestApi.vue';
 
 
 <template >
-  <Home />
+  <!-- <Home /> -->
   <TestApi />
 </template>
 

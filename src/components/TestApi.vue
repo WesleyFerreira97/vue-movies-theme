@@ -1,31 +1,27 @@
 <template>
     <div class="movie-detail">
-        <h2>{{ movie.Title }}</h2>
+        <!-- <h2>{{ movie.Title }}</h2>
         <p>{{ movie.Year }}</p>
-
+    
         <img :src="movie.Poster" alt="Movie Poster" class="featured-img" />
-        <p>{{ movie.Plot }}</p>
+        <p>{{ movie.Plot }}</p> -->
     </div>
 </template>
 
-<script>
+<script setup lang="ts">
 import { ref, onBeforeMount } from 'vue';
-import { useRoute } from 'vue-router';
-import { fetchData } from '../services/apiMovies.ts'
+import { useFetch } from '../hooks/useFetch';
+import { getPopularMovies } from '../services/apiFunctions';
 
-export default {
-    setup() {
+const movie = ref<any | null>([]);
 
-        const movie = ref({});
-        const route = useRoute();
-        onBeforeMount(() => {
-            fetchData(movie);
-        });
-        return {
-            movie
-        }
-    }
-}
+onBeforeMount(async () => {
+    const { data } = await getPopularMovies();
+    console.log(data.value);
+    movie.value = data.value;
+
+});
+
 </script>
 
 <style lang="scss">
