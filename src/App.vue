@@ -5,10 +5,10 @@ import TestApi from './components/TestApi.vue';
 
 
 <template >
-  <!-- <Home /> -->
-  <TestApi />
+  <Home />
 </template>
 
 
 <style scoped>
 </style>
+ 

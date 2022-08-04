@@ -1,10 +1,6 @@
 <template>
-    <div class="movie-detail">
-        <!-- <h2>{{ movie.Title }}</h2>
-        <p>{{ movie.Year }}</p>
-    
-        <img :src="movie.Poster" alt="Movie Poster" class="featured-img" />
-        <p>{{ movie.Plot }}</p> -->
+    <div v-for="item in movie">
+        {{ item.title }}
     </div>
 </template>
 
@@ -17,9 +13,8 @@ const movie = ref<MovieProps[] | null>();
 
 onBeforeMount(async () => {
     const { data } = await getPopularMovies();
-    console.log(data.value?.results);
-    movie.value = data.value?.results;
 
+    movie.value = data.value?.results;
 });
 
 </script>
