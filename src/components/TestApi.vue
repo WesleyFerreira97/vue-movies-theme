@@ -10,15 +10,15 @@
 
 <script setup lang="ts">
 import { ref, onBeforeMount } from 'vue';
-import { useFetch } from '../hooks/useFetch';
 import { getPopularMovies } from '../services/apiFunctions';
+import type { MovieProps } from '../services/apiFunctions'
 
-const movie = ref<any | null>([]);
+const movie = ref<MovieProps[] | null>();
 
 onBeforeMount(async () => {
     const { data } = await getPopularMovies();
-    console.log(data.value);
-    movie.value = data.value;
+    console.log(data.value?.results);
+    movie.value = data.value?.results;
 
 });
 
