@@ -2,7 +2,10 @@
     <div class="widget-wrap">
         <header class="header">
             <div class="container">
-                <h1 class="widget-title textLg">{{ title }}</h1>
+                <h1 class="widget-title textLg">
+                    <span class="title-brand">VMax </span>
+                    {{ title }}
+                    </h1>
             </div>  
         </header>
         <swiper 
@@ -10,9 +13,9 @@
         :space-between="0"   
         :breakpoints="{
             '500': {
-                slidesPerView: 4,
+                slidesPerView: 3,
             },
-            '768': {
+            '650': {
                 slidesPerView: 4,
             },
             '950': {
@@ -93,7 +96,14 @@ export default {
 }
 
 .widget-title {
-    font-size: 2rem;
+    font-size: 1.5rem;
+}
+
+.title-brand {
+    font-weight: 900;
+    color: #16C79A;
+    letter-spacing: .2rem;
+    /* font-size: 1.5rem; */
 }
 
 .carousel-item {
@@ -125,7 +135,7 @@ export default {
         &-wrap {
             width: 100%;
         }
-    }
+    }   
 
     &__title {
         color: #fff;
@@ -138,6 +148,10 @@ export default {
 }
 
 @media ( min-width: 768px ) {
+    .widget-title {
+    font-size: 2rem;
+}
+
     .carousel-item { 
         &__info {
 
