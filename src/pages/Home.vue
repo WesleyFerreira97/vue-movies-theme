@@ -13,7 +13,9 @@ export default {
 <template>
     <div>
         <CarouselHome />
-        <ListCategory />
+        <ListCategory title="Popular" />
+        <ListCategory title="Action" />
+        <ListCategory title="Adventure" />
     </div>
 </template>
 

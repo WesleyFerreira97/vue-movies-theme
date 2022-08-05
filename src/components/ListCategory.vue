@@ -1,7 +1,29 @@
 <template>
     <div class="widget-wrap">
-        <swiper :slides-per-view="7" :space-between="0">
-            <swiper-slide v-for="(item, index) in movie" :key="index">
+        <header class="header">
+            <div class="container">
+                <h1 class="widget-title textLg">{{ title }}</h1>
+            </div>  
+        </header>
+        <swiper 
+        :slides-per-view="2" 
+        :space-between="0"   
+        :breakpoints="{
+            '500': {
+                slidesPerView: 4,
+            },
+            '768': {
+                slidesPerView: 4,
+            },
+            '950': {
+                slidesPerView: 5,
+            },
+            '1200': {
+                slidesPerView: 7,
+            }
+        }"
+        >
+            <swiper-slide v-for="(item, index) in movie" :key="index" >
                 <div class="carousel-item" >
                     <div class="carousel-item__background">
                         <img :src="IMAGE_BASE_URL + item.poster_path" />
@@ -50,13 +72,28 @@ export default {
             IMAGE_BASE_URL
         };
     },
+    props: {
+        title: String,
+    }
 };
 </script>
 
 <style scoped lang="scss">
 
 .widget-wrap {
-    margin: 5rem 0rem
+    margin: 3rem 0rem;
+}
+
+.header {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 1rem 0 1rem;
+    color: #fff;
+}
+
+.widget-title {
+    font-size: 2rem;
 }
 
 .carousel-item {

@@ -1,6 +1,6 @@
 
 import { useFetch } from "../hooks/useFetch";
-import { BASE_URL, API_KEY, IMAGE_URL } from "./apiData";
+import { BASE_URL, API_KEY } from "./apiData";
 
 export type MovieProps = {
     adult: boolean;
@@ -27,7 +27,7 @@ type PopularMoviesProps = {
 }
 
 export const getPopularMovies = async () => {
-    const popularMoviesUrl = BASE_URL + "/discover/movie" + API_KEY + '&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1';
+    const popularMoviesUrl = BASE_URL + "/discover/movie" + API_KEY + '&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=8';
 
     const data = await useFetch<PopularMoviesProps>(popularMoviesUrl);
 
