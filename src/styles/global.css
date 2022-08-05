@@ -30,3 +30,30 @@ a {
 .container {
     width: 80%;
 }
+
+.swiper-button-prev,
+.swiper-button-next {
+    color: #16C79A !important;
+    height: 106% !important;
+    top: 0 !important;
+    width: 45px !important;
+    background: rgba(24, 24, 24, 0.2) !important;
+}
+
+.swiper-button-prev:hover,
+.swiper-button-next:hover {
+    background: rgba(24, 24, 24, 0.4) !important;
+}
+
+.swiper-button-prev:active,
+.swiper-button-next:active {
+    background: rgba(24, 24, 24, 0.8) !important;
+}
+
+.swiper-button-next {
+    right: 0 !important;
+}
+
+.swiper-button-prev {
+    left: 0 !important;
+}
