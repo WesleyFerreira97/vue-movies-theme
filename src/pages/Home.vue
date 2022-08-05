@@ -1,16 +1,19 @@
 <script lang="ts">
 import CarouselHome from '../components/CarouselHome.vue'
+import ListCategory from '../components/ListCategory.vue'
 
 export default {
     components: {
-        carouselHome: CarouselHome,
-    }
+    CarouselHome,
+    ListCategory
+}
 }
 </script>
 
 <template>
     <div>
-        <carouselHome />
+        <CarouselHome />
+        <ListCategory />
     </div>
 </template>
 

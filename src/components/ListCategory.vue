@@ -1,27 +1,25 @@
-<template >
-    <swiper :slides-per-view="1" :space-between="0">
-        <swiper-slide v-for="(item, index) in movie" :key="index">
-            <div class="carousel-item" >
-                <div class="carousel-item__background">
-                    <img :src="IMAGE_BASE_URL + item.backdrop_path" />
-                </div>
-                <div class="carousel-item__info">
-                    <div class="container">
-                        <div class="carousel-item__info-wrap">
-                            <h1 class="carousel-item__title titleLg">
-                                {{ item.title }}
-                            </h1>
-                            <h1 class="carousel-item__overview textLg">
-                                {{ item.overview }}
-                            </h1>
-                            <Button text="Assista" />
+<template>
+    <div class="widget-wrap">
+        <swiper :slides-per-view="7" :space-between="0">
+            <swiper-slide v-for="(item, index) in movie" :key="index">
+                <div class="carousel-item" >
+                    <div class="carousel-item__background">
+                        <img :src="IMAGE_BASE_URL + item.poster_path" />
+                    </div>
+                    <div class="carousel-item__info">
+                        <div class="container">
+                            <div class="carousel-item__info-wrap">
+                                <h1 class="carousel-item__title titleSm">
+                                    <!-- {{ item.title }} -->
+                                </h1>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </swiper-slide>
-        ...
-    </swiper>
+            </swiper-slide>
+            ...
+        </swiper>
+    </div>
 </template>
 
 <script lang="ts" >
@@ -31,7 +29,6 @@ import { ref, onBeforeMount } from 'vue';
 import { getPopularMovies } from '../services/apiFunctions';
 import type { MovieProps } from '../services/apiFunctions';
 import { IMAGE_BASE_URL } from '../services/apiData';
-import Button from './Button.vue';
 
 const movie = ref<MovieProps[] | null>();
 
@@ -39,7 +36,6 @@ export default {
     components: {
         Swiper,
         SwiperSlide,
-        Button
     },
     setup() {
 
@@ -59,10 +55,14 @@ export default {
 
 <style scoped lang="scss">
 
+.widget-wrap {
+    margin: 5rem 0rem
+}
+
 .carousel-item {
-    height: 100vh;
     width: 100%;
     position: relative;
+    aspect-ratio: 2/3;
 
     &__background {
         height: 100%;
@@ -78,7 +78,7 @@ export default {
     }
 
     &__info {
-        background: rgba(0, 0, 0, 0.404);
+        /* background: rgba(0, 0, 0, 0.404); */
         height: 100%;
         width: 100%;
         display: flex;
