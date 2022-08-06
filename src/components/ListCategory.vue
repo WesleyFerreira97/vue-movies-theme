@@ -14,6 +14,7 @@
       :modules="modules"
       :slideToClickedSlide="true"
       :loop="true"
+      @slideChange="onSlideChange"
       navigation
       :breakpoints="{
         '500': {
@@ -33,7 +34,10 @@
       <swiper-slide v-for="(item, index) in movie" :key="index">
         <div
           class="carousel-item"
-          @click="statusActiveStyle = item.id"
+          @click="
+            statusActiveStyle = item.id;
+            toggleInfo(true);
+          "
           :style="statusActiveStyle === item.id ? activeStyle : null"
         >
           <div class="carousel-item__background">
@@ -55,6 +59,8 @@
   </div>
 </template>
 
+
+
 <script lang="ts" >
 import "swiper/css";
 import { Swiper, SwiperSlide } from "swiper/vue";
@@ -74,12 +80,20 @@ export default {
     SwiperSlide,
   },
   setup() {
+    const toggleInfo = (status: boolean) => {
+      console.log(status);
+    };
+    const onSlideChange = () => {
+      console.log("slide change");
+    };
     onBeforeMount(async () => {
       const { data } = await getPopularMovies();
 
       movie.value = data.value?.results;
     });
     return {
+      toggleInfo,
+      onSlideChange,
       movie,
       IMAGE_BASE_URL,
       modules: [Navigation],
@@ -98,6 +112,11 @@ export default {
   },
 };
 </script>
+
+
+
+
+
 
 <style scoped lang="scss">
 .widget-wrap {
@@ -180,4 +199,6 @@ export default {
 </style>
 
 
-// :style="statusActiveStyle ? activeStyle : null"
+
+// aplicar um scrollIntoView para scrolar até o component clicado 
+// @swiperChange="onSwiper"

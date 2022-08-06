@@ -27,7 +27,7 @@ type PopularMoviesProps = {
 }
 
 export const getPopularMovies = async () => {
-    const popularMoviesUrl = BASE_URL + "/discover/movie" + API_KEY + '&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=3';
+    const popularMoviesUrl = BASE_URL + "/discover/movie" + API_KEY + '&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1';
 
     const data = await useFetch<PopularMoviesProps>(popularMoviesUrl);
 
